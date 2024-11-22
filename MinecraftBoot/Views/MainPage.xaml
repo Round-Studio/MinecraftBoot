@@ -27,7 +27,7 @@
             </wuc:TitleBar.Content>
             <wuc:TitleBar.Footer>
                 <StackPanel Orientation="Horizontal">
-                    <usercontrols:UserView />
+                    <!--usercontrols:UserView /-->
                     <Button x:Name="HomeButton"
                             Height="32"
                             Margin="0,0,4,0"
