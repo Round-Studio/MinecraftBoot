@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="MinecraftBoot.DialogContent.CreateNewAccount"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MinecraftBoot.DialogContent"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
+    xmlns:wuc="using:WinUICommunity"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style x:Key="PanelStyle"
+               TargetType="StackPanel">
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="16" />
+            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="Spacing" Value="8" />
+            <Setter Property="animations:Implicit.HideAnimations" Value="{StaticResource ShowTransitions}" />
+        </Style>
+        <animations:ImplicitAnimationSet x:Name="ShowTransitions">
+            <animations:OffsetAnimation EasingMode="EaseOut"
+                                        From="0,24,0"
+                                        To="0"
+                                        Duration="0:0:0.4" />
+            <animations:OpacityAnimation EasingMode="EaseOut"
+                                         From="0"
+                                         To="1"
+                                         Duration="0:0:0.2" />
+        </animations:ImplicitAnimationSet>
+        <animations:ImplicitAnimationSet x:Name="HideTransitions">
+            <animations:OffsetAnimation EasingMode="EaseOut"
+                                        From="0"
+                                        To="0,24,0"
+                                        Duration="0:0:0.2" />
+            <animations:OpacityAnimation EasingMode="EaseOut"
+                                         From="1"
+                                         To="0"
+                                         Duration="0:0:0.1" />
+        </animations:ImplicitAnimationSet>
+    </Page.Resources>
+    <StackPanel Width="360"
+                VerticalAlignment="Top"
+                Orientation="Vertical"
+                Spacing="8">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="创建新账户" Margin="0,0,0,16"/>
+            <Button Style="{ThemeResource SubtleButtonStyle}"
+                    Content="{wuc:FontIcon FontSize=16, Glyph=&#xE8BB;}"
+                    Click="Button_Click"
+                    Height="32"
+                    Margin="162,-16,0,0"/>
+        </StackPanel>
+
+        <InfoBar IsOpen="{x:Bind InfoBarIsShow}"
+                 Severity="Error"
+                 Title="错误！"
+                 Message="账户信息有误！" />
+
+        <controls:Segmented x:Name="segmentedControl"
+                            HorizontalAlignment="Stretch"
+                            SelectedIndex="0">
+            <controls:SegmentedItem Content="正版账户"
+                                    Icon="{ui:FontIcon Glyph=&#xE77B;}"
+                                    IsSelected="True"
+                                    Tag="microsoft"/>
+            <controls:SegmentedItem Content="第三方账户"
+                                    Icon="{ui:FontIcon Glyph=&#xE7EE;}"
+                                    Tag="other"/>
+            <controls:SegmentedItem Content="离线账户"
+                                    Icon="{ui:FontIcon Glyph=&#xF384;}"
+                                    Tag="offline" />
+        </controls:Segmented>
+        <controls:SwitchPresenter Value="{Binding SelectedItem.Tag, ElementName=segmentedControl}">
+            <controls:Case Value="microsoft">
+                <StackPanel animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                            Orientation="Vertical"
+                            Style="{StaticResource PanelStyle}">
+
+                    <TextBox Header="账户名称" PlaceholderText="名称" x:Name="msTextBox"/>
+                    <PasswordBox Header="账户密码" PlaceholderText="密码" x:Name="msPasswordBox"/>
+                    <Button Content="确定" Click="MicrosoftButton_Click"/>
+                </StackPanel>
+            </controls:Case>
+            <controls:Case Value="other">
+                <StackPanel animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                            Orientation="Vertical"
+                            Style="{StaticResource PanelStyle}">
+
+                    <TextBox Header="认证服务器" PlaceholderText="yggdrasil" x:Name="otherWebTextBox"/>
+                    <TextBox Header="账户名称" PlaceholderText="名称" x:Name="otherTextBox"/>
+                    <PasswordBox Header="账户密码" PlaceholderText="密码" x:Name="otherPasswordBox"/>
+                    <Button Content="确定" Click="OtherButton_Click"/>
+                </StackPanel>
+            </controls:Case>
+            <controls:Case Value="offline">
+                <StackPanel animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                            Orientation="Vertical"
+                            Style="{StaticResource PanelStyle}">
+                    <TextBox Header="账户名称" PlaceholderText="名称" x:Name="offlineTextBox"/>
+
+                    <Button Content="确定" Click="OfflineButton_Click"/>
+                </StackPanel>
+            </controls:Case>
+        </controls:SwitchPresenter>
+    </StackPanel>
+
+</Page>

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="MinecraftBoot.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MinecraftBoot.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:CommunityToolkit.WinUI.Media"
+    xmlns:common="using:Microsoft.UI.Xaml.Controls"
+    xmlns:wuc="using:WinUICommunity"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    xmlns:controls1="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:usercontrols="using:MinecraftBoot.Views.UserControls"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <media:AttachedCardShadow x:Key="CommonShadow"
+                                  Color="#9cc4e4"
+                                  CornerRadius="8"
+                                  Offset="0, 1"/>
+
+        <TeachingTip x:Name="HomeTeachingTip"
+                     PreferredPlacement="Auto"
+                     Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                     Title="创建房间？"
+                     Subtitle="即将创建一个多人房间"
+                     IsLightDismissEnabled="True"
+                     ActionButtonContent="开始创建"
+                     ActionButtonClick="HomeTeachingTip_ActionButtonClick"
+                     CloseButtonContent="取消"/>
+    </Page.Resources>
+
+    <ScrollView VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="40,16,40,0">
+            <controls:StaggeredPanel DesiredColumnWidth="475" ColumnSpacing="8" RowSpacing="8">
+                <wuc:SettingsGroup Description="管理账户"
+                                   x:Name="SettingsGroup_UserManager"
+                                   HeaderIcon="{ui:FontIcon Glyph=&#xE716;}"
+                                   Header="账户">
+                    <wuc:SettingsGroup.Items>
+                        <wuc:SettingsCard Description=""
+                          Header="使用账号"
+                          HeaderIcon="{ui:FontIcon Glyph=&#xEE57;}" />
+
+                        <wuc:SettingsCard Header="新建账号"
+                          IsClickEnabled="True"
+                          Click="NewAccountSettingsCard_Click"
+                          HeaderIcon="{ui:FontIcon Glyph=&#xE8FA;}" />
+
+                        <wuc:SettingsCard Header="更改账户" HeaderIcon="{ui:FontIcon Glyph=&#xE748;}">
+                            <wuc:SettingsCard.Content>
+                                <Button Content="选择账户" Margin="4">
+                                    <Button.Flyout>
+                                        <Flyout>
+                                            <usercontrols:ChooseUserControl/>
+                                        </Flyout>
+                                    </Button.Flyout>
+                                </Button>
+                            </wuc:SettingsCard.Content>
+                        </wuc:SettingsCard>
+
+                        <wuc:SettingsCard Header="删除此账号"
+                          Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                          HeaderIcon="{ui:FontIcon Glyph=&#xF69B;}" >
+                        </wuc:SettingsCard>
+                    </wuc:SettingsGroup.Items>
+                </wuc:SettingsGroup>
+                <wuc:SettingsGroup Header="设置">
+                    <wuc:SettingsGroup.Content>
+                        <Button Click="GoSettingsButton_Click" Content="设置"/>
+                    </wuc:SettingsGroup.Content>
+                </wuc:SettingsGroup>
+                
+                <wuc:SettingsGroup Description="管理和启动游戏"
+                                   HeaderIcon="{ui:FontIcon Glyph=&#xE7FC;}"
+                                   Header="游戏">
+                    <wuc:SettingsGroup.Items>
+                        <wuc:SettingsCard Header="启动游戏"
+                                          HeaderIcon="{ui:FontIcon Glyph=&#xE709;}" />
+                        <wuc:SettingsCard Header="选择版本"
+                                          HeaderIcon="{ui:FontIcon Glyph=&#xF0E3;}" />
+                        <wuc:SettingsCard Header="创建房间"
+                                          HeaderIcon="{ui:FontIcon Glyph=&#xE774;}"
+                                          IsClickEnabled="True"
+                                          Click="CreateHomeSettingsCard_Click"/>
+                        <wuc:SettingsCard Header="下载版本"
+                                          HeaderIcon="{ui:FontIcon Glyph=&#xE896;}"
+                                          IsClickEnabled="True"
+                                          Click="DownloadSettingsCard_Click"/>
+                    </wuc:SettingsGroup.Items>
+                </wuc:SettingsGroup>
+                
+            </controls:StaggeredPanel>
+        </StackPanel>
+        
+    </ScrollView>
+</Page>

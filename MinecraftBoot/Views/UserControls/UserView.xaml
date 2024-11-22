@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="MinecraftBoot.Views.UserControls.UserView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MinecraftBoot.Views.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+
+    <Button Style="{ThemeResource SubtleButtonStyle}">
+        <StackPanel Orientation="Horizontal">
+            <!--PersonPicture ProfilePicture="ms-appx:///Assets/icon.png" Width="16" Height="16" Margin="-4,0,4,0" Padding="0"/-->
+            <StackPanel>
+                <TextBlock Text="User Name" Style="{StaticResource BodyStrongTextBlockStyle}" Margin="0,-4,-6,-4"/>
+                <TextBlock Text="Other Info" Style="{StaticResource CaptionTextBlockStyle}" Margin="0,0,0,-4"/>
+            </StackPanel>
+        </StackPanel>
+        <Button.Flyout>
+            <MenuFlyout>
+                <MenuFlyoutItem Text="用户主页" Icon="People" Click="UserMenuFlyoutItem_Click"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem Text="应用设置" Icon="Setting" Click="SettingsMenuFlyoutItem_Click"/>
+
+                <MenuFlyoutSubItem Text="开发者工具"
+                                   Icon="{ui:FontIcon Glyph=&#xEC7A;}"
+                                   Visibility="{x:Bind IsDevMenuShow}">
+                    <MenuFlyoutItem Text="焦点追踪器"
+                                    Click="FocusTrackerMenuFlyoutItem_Click"/>
+                    <ToggleMenuFlyoutItem Text="文本优化显示" IsChecked="False" Click="ToggleMenuFlyoutItem_Click"/>
+                </MenuFlyoutSubItem>
+            </MenuFlyout>
+        </Button.Flyout>
+    </Button>
+    
+</UserControl>

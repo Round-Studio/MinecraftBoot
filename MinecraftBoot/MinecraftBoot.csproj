@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>MinecraftBoot</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x64;x86;ARM64</Platforms>
+    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &gt;= 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <Version>1.0.0</Version>
+    <ImplicitUsings>true</ImplicitUsings>
+    <LangVersion>Latest</LangVersion>
+    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <WindowsPackageType>MSIX</WindowsPackageType>
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <PackageCertificateThumbprint>27F61F20552E07B53179C00693D6E6B5F7B7DFF4</PackageCertificateThumbprint>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Auto</AppxBundle>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <UseWindowsForms>False</UseWindowsForms>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Assets\**\*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Assets\Cover\SettingCover.png" />
+    <Content Remove="Assets\icon.ico" />
+    <Content Remove="Assets\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="DialogContent\CreateNewAccount.xaml" />
+    <None Remove="DialogContent\CreateNewRoom.xaml" />
+    <None Remove="Tools\DevToolWindowContent\DevToolContentPage.xaml" />
+    <None Remove="Tools\DevToolWindowContent\DevToolWindow.xaml" />
+    <None Remove="Views\HomePage.xaml" />
+    <None Remove="Views\InstallPage.xaml" />
+    <None Remove="Views\UserControls\ChooseUserControl.xaml" />
+    <None Remove="Views\UserControls\ChooseUserControlPage\MicrosoftView.xaml" />
+    <None Remove="Views\UserControls\ChooseUserControlPage\OfflineView.xaml" />
+    <None Remove="Views\UserControls\ChooseUserControlPage\OtherView.xaml" />
+    <None Remove="Views\UserControls\UserView.xaml" />
+    <None Remove="Views\UserInfoPage.xaml" />
+    <None Remove="Views\UserManagerPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+  <!-- 
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CmlLib.Core" Version="4.0.3" />
+    <PackageReference Include="CommunityToolkit.Labs.WinUI.Shimmer" Version="0.1.240517-build.1678" />
+    <PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.1.240916" />
+    <PackageReference Include="CommunityToolkit.WinUI.Behaviors" Version="8.1.240916" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.HeaderedControls" Version="8.1.240916" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.1.240916" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" Version="8.1.240916" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.TabbedCommandBar" Version="8.1.240821" />
+    <PackageReference Include="CommunityToolkit.WinUI.DeveloperTools" Version="8.1.240916" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Controls.Markdown" Version="7.1.2" />
+    <PackageReference Include="ComputeSharp.D2D1.WinUI" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240802000" />
+    <PackageReference Include="MinecraftLaunch" Version="3.0.7" />
+    <PackageReference Include="WinUICommunity.Components" Version="6.9.0" />
+    <PackageReference Include="WinUICommunity.Core" Version="6.9.0" />
+    <PackageReference Include="WinUICommunity.LandingPages" Version="6.9.0" />
+    <PackageReference Include="WinUICommunity.Win2D" Version="6.9.0" />
+    <PackageReference Include="WinUIEx" Version="2.3.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Sym\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DialogContent\CreateNewAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\UserControls\ChooseUserControlPage\OfflineView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\UserControls\ChooseUserControlPage\OtherView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\UserControls\ChooseUserControlPage\MicrosoftView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\UserControls\ChooseUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Tools\DevToolWindowContent\DevToolContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Tools\DevToolWindowContent\DevToolWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\UserManagerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\UserInfoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\InstallPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DialogContent\CreateNewRoom.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\UserControls\UserView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <!-- 
+    Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution 
+    Explorer "Package and Publish" context menu entry to be enabled for this project even if 
+    the Windows App SDK Nuget package has not yet been restored.
+  -->
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+</Project>

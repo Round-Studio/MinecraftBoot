@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="MinecraftBoot.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:MinecraftBoot"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wuc="using:WinUICommunity"
+    xmlns:usercontrols="using:MinecraftBoot.Views.UserControls"
+    mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <wuc:TitleBar
+            x:Name="appTitleBar"
+            Title="{x:Bind local:App.Current.AppName}"
+            BackButtonClick="appTitleBar_BackButtonClick"
+            Icon="{wuc:BitmapIcon Source=ms-appx:///Assets/icon.png}"
+            IsBackButtonVisible="True"
+            IsPaneButtonVisible="False"
+            PaneButtonClick="appTitleBar_PaneButtonClick"
+            Subtitle="{x:Bind local:App.Current.AppVersion}">
+            <wuc:TitleBar.Content>
+            </wuc:TitleBar.Content>
+            <wuc:TitleBar.Footer>
+                <StackPanel Orientation="Horizontal">
+                    <usercontrols:UserView />
+                    <Button x:Name="HomeButton"
+                            Height="32"
+                            Margin="0,0,4,0"
+                            Click="HomeButton_Click"
+                            Content="{wuc:FontIcon GlyphCode=E80F, FontSize=16}"
+                            Style="{ThemeResource SubtleButtonStyle}"
+                            ToolTipService.ToolTip="改变主题" />
+                    <Button x:Name="ThemeButton"
+                            Height="32"
+                            Margin="0,0,4,0"
+                            Click="ThemeButton_Click"
+                            Content="{wuc:FontIcon GlyphCode=E793, FontSize=16}"
+                            Style="{ThemeResource SubtleButtonStyle}"
+                            ToolTipService.ToolTip="返回主页" />
+
+                </StackPanel>
+
+            </wuc:TitleBar.Footer>
+        </wuc:TitleBar>
+        <NavigationView
+            x:Name="NavView"
+            Grid.Row="1"
+            PaneDisplayMode="LeftMinimal"
+            ExpandedModeThresholdWidth="750"
+            IsBackButtonVisible="Collapsed"
+            IsPaneToggleButtonVisible="False"
+            x:FieldModifier="Public">
+
+            <Frame x:Name="NavFrame" Navigated="NavFrame_Navigated" x:FieldModifier="Public"/>
+        </NavigationView>
+
+    </Grid>
+</Page>
+

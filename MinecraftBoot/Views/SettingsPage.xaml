@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="MinecraftBoot.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wuc="using:WinUICommunity"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
+    mc:Ignorable="d">
+    <ScrollView HorizontalAlignment="Stretch"
+                VerticalScrollBarVisibility="Visible">
+        <StackPanel>
+            <wuc:AllLandingPage HeaderImage="ms-appx:///Assets/Cover/SettingCover.png" HeaderText="设置" CornerRadius="0"/>
+            <StackPanel Margin="20,-84,20,0"
+                        wuc:PanelAttach.ChildrenTransitions="Default"
+                        Spacing="5">
+
+                <TextBlock Text="应用设置" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+                <wuc:SettingsCard x:Name="GeneralSetting"
+                          Click="OnSettingCard_Click"
+                          Description="更改应用设置"
+                          Header="常规"
+                          HeaderIcon="{wuc:FontIcon Glyph=&#xE74C;}"
+                          IsClickEnabled="True"
+                          Tag="GeneralSettingPage" />
+                <wuc:SettingsCard x:Name="ThemeSetting"
+                          Click="OnSettingCard_Click"
+                          Description="探索自定义应用程序外观和行为的不同方法。您可以更改主题选项，以适应您的风格和偏好。"
+                          Header="外观和行为"
+                          HeaderIcon="{wuc:FontIcon Glyph=&#xE790;}"
+                          IsClickEnabled="True"
+                          Tag="ThemeSettingPage" />
+                <wuc:SettingsCard x:Name="AboutSetting"
+                          Click="OnSettingCard_Click"
+                          Description="关于这款软件和开发人员"
+                          Header="关于我们"
+                          HeaderIcon="{wuc:FontIcon Glyph=&#xE946;}"
+                          IsClickEnabled="True"
+                          Tag="AboutUsSettingPage" />
+            </StackPanel>
+        </StackPanel>
+    </ScrollView>
+    
+</Page>
+

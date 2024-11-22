@@ -1,0 +1,23 @@
+﻿{
+  "Groups": [
+    {
+      "UniqueId": "MinecraftBoot",
+      "Title": "MinecraftBoot",
+      "ImagePath": "ms-appx:///Assets/icon.png",
+      "ImageIconPath": "ms-appx:///Assets/icon.png",
+      "IsSpecialSection": false,
+      "ShowItemsWithoutGroup": true,
+      "IsExpanded": false,
+      "Items": [
+        {
+          "UniqueId": "MinecraftBoot.Views.HomePage",
+          "Title": "Mod Pack Manager",
+          "Subtitle": "MinecraftBoot",
+          "ImagePath": "ms-appx:///Assets/NavMenuIcon/House.png",
+          "ImageIconPath": "ms-appx:///Assets/NavMenuIcon/House.png",
+          "HideItem": true
+        }
+      ]
+    }
+  ]
+}
