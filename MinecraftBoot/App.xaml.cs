@@ -41,7 +41,8 @@ public partial class App : Application
         CurrentWindow.AppWindow.SetIcon("Assets/icon.ico");
 
         CurrentWindow.Activate();
-        Growl.WarningGlobal("你正在使用开发者版本，此版本效果不代表正式效果！", "Warning");
+        // Growl.WarningGlobal("你正在使用开发者版本，此版本效果不代表正式效果！", "Warning");
+
     }
 }
 

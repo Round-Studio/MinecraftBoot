@@ -6,8 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:MinecraftBoot"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:wuc="using:WinUICommunity"
     xmlns:usercontrols="using:MinecraftBoot.Views.UserControls"
+    xmlns:wuc="using:WinUICommunity"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -23,8 +23,6 @@
             IsPaneButtonVisible="False"
             PaneButtonClick="appTitleBar_PaneButtonClick"
             Subtitle="{x:Bind local:App.Current.AppVersion}">
-            <wuc:TitleBar.Content>
-            </wuc:TitleBar.Content>
             <wuc:TitleBar.Footer>
                 <StackPanel Orientation="Horizontal">
                     <!--usercontrols:UserView /-->

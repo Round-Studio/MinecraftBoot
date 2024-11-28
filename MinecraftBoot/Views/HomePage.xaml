@@ -35,6 +35,11 @@
 
     <ScrollView VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="40,16,40,0">
+            <InfoBar IsOpen="True"
+                     Margin="0,0,0,8"
+                     Severity="Warning"
+                     Title="正在处于开发者模式！"
+                     Message="此版本不代表正式效果" />
             <controls:StaggeredPanel DesiredColumnWidth="475" ColumnSpacing="8" RowSpacing="8">
                 <wuc:SettingsGroup Description="管理账户"
                                    x:Name="SettingsGroup_UserManager"

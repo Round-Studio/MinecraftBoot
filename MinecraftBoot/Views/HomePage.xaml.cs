@@ -18,7 +18,7 @@ namespace MinecraftBoot.Views;
 /// </summary>
 public partial class HomePage : Page
 {
-    private ObservableCollection<Symbol> strings { get; }
+    private bool IsDevMod {  get; set; } = Debugger.IsAttached;
 
     public HomePage()
     {
