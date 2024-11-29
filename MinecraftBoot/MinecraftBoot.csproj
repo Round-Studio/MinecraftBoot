@@ -32,6 +32,7 @@
     <UseWindowsForms>False</UseWindowsForms>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
   </PropertyGroup>
   <ItemGroup>
     <None Include="Assets\**\*">

@@ -18,14 +18,6 @@ public sealed partial class CreateNewAccount : Page
 
     private void OfflineButton_Click(object sender, RoutedEventArgs e)
     {
-        var text = offlineTextBox.Text;
-        if (text == "")
-        {
-            InfoBarIsShow = true;
-            return;
-        }
-        OfflineAuthenticator authenticator = new(offlineTextBox.Text);
-        App.userProfile_OfflineAccount = authenticator.Authenticate();
         ((ContentDialog)Parent).Hide();
     }
 

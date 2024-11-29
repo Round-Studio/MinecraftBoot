@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrols="using:MinecraftBoot.Views.UserControls"
     xmlns:wuc="using:WinUICommunity"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -16,16 +17,20 @@
         </Grid.RowDefinitions>
         <wuc:TitleBar
             x:Name="appTitleBar"
-            Title="{x:Bind local:App.Current.AppName}"
             BackButtonClick="appTitleBar_BackButtonClick"
             Icon="{wuc:BitmapIcon Source=ms-appx:///Assets/icon.png}"
+            Title="{x:Bind local:App.Current.AppName}" 
+            Subtitle="{x:Bind local:App.Current.AppVersion}"
             IsBackButtonVisible="True"
             IsPaneButtonVisible="False"
-            PaneButtonClick="appTitleBar_PaneButtonClick"
-            Subtitle="{x:Bind local:App.Current.AppVersion}">
+            PaneButtonClick="appTitleBar_PaneButtonClick">
+
             <wuc:TitleBar.Footer>
                 <StackPanel Orientation="Horizontal">
-                    <!--usercontrols:UserView /-->
+                    <!--usercontrols:UserView /
+                    Line21 Icon="{wuc:BitmapIcon Source=ms-appx:///Assets/icon.png}"
+                           Title="{x:Bind local:App.Current.AppName}" 
+                           Subtitle="{x:Bind local:App.Current.AppVersion}"-->
                     <Button x:Name="HomeButton"
                             Height="32"
                             Margin="0,0,4,0"

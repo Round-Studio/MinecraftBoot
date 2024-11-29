@@ -37,6 +37,9 @@ public sealed partial class ThemeSettingPage : Page
     {
         _ = await Launcher.LaunchUriAsync(new Uri("ms-settings:colors"));
     }
+
+    private void titleSetting_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
 }
-
-

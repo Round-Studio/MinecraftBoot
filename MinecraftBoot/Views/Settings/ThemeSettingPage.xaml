@@ -16,20 +16,20 @@
 
             <views:BreadcrumbBarUserControl SingleItem="{x:Bind BreadCrumbBarItemText, Mode=OneWay}" />
 
-            <wuc:SettingsCard
-            Description="选择适合您心情和偏好的主题。您可以选择深色、浅色或系统主题。"
-            Header="应用主题"
-            HeaderIcon="{wuc:FontIcon Glyph=&#xE706;}">
+            <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="材质设置" Margin="0,0,0,4"/>
+
+            <wuc:SettingsCard Description="选择适合您心情和偏好的主题。您可以选择深色、浅色或系统主题。"
+                              Header="应用主题"
+                              HeaderIcon="{wuc:FontIcon Glyph=&#xE706;}">
                 <ComboBox x:Name="CmbTheme" SelectionChanged="CmbTheme_SelectionChanged">
                     <ComboBoxItem Content="浅色" Tag="Light" />
                     <ComboBoxItem Content="深色" Tag="Dark" />
                     <ComboBoxItem Content="默认" Tag="Default" />
                 </ComboBox>
             </wuc:SettingsCard>
-            <wuc:SettingsCard
-            Description="更改应用程序后面的背景材料的外观。您可以从云母、亚克力或透明选项中进行选择。"
-            Header="材质"
-            HeaderIcon="{wuc:FontIcon Glyph=&#xE81E;}">
+            <wuc:SettingsCard Description="更改应用程序后面的背景材料的外观。您可以从云母、亚克力或透明选项中进行选择。"
+                              Header="材质"
+                              HeaderIcon="{wuc:FontIcon Glyph=&#xE81E;}">
                 <ComboBox x:Name="CmbBackdrop" SelectionChanged="CmbBackdrop_SelectionChanged">
                     <ComboBoxItem Content="纯色" Tag="None" />
                     <ComboBoxItem Content="云母" Tag="Mica" />
@@ -40,13 +40,24 @@
                     <ComboBoxItem Content="透明" Tag="Transparent" />
                 </ComboBox>
             </wuc:SettingsCard>
-            <wuc:SettingsCard
-            ActionIcon="{wuc:FontIcon Glyph=&#xE8A7;}"
-            Click="OpenWindowsColorSettings"
-            Description="将应用的颜色与 Windows 主题色同步。您可以通过单击此卡打开 Windows 主题色设置。"
-            Header="强调色"
-            HeaderIcon="{wuc:FontIcon Glyph=&#xE790;}"
-            IsClickEnabled="True" />
+            <wuc:SettingsCard ActionIcon="{wuc:FontIcon Glyph=&#xE8A7;}"
+                              Click="OpenWindowsColorSettings"
+                              Description="将应用的颜色与 Windows 主题色同步。您可以通过单击此卡打开 Windows 主题色设置。"
+                              Header="强调色"
+                              HeaderIcon="{wuc:FontIcon Glyph=&#xE790;}"
+                              IsClickEnabled="True" />
+
+            <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="标题栏" Margin="0,16,0,4"/>
+            <wuc:SettingsCard Description="更改应用程序标题栏的样式"
+                              Header="标题栏样式"
+                              HeaderIcon="{wuc:FontIcon Glyph=&#xE66A;}">
+                <ComboBox x:Name="titleSetting" SelectionChanged="titleSetting_SelectionChanged">
+                    <ComboBoxItem Content="图标与文本" Tag="IconAndText" />
+                    <ComboBoxItem Content="仅文本" Tag="Text" />
+                    <ComboBoxItem Content="仅图标" Tag="Icon" />
+                    <ComboBoxItem Content="无" Tag="DesktopAcrylic" />
+                </ComboBox>
+            </wuc:SettingsCard>
         </StackPanel>
     </ScrollView>
 </Page>

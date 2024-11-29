@@ -4,7 +4,6 @@ using MinecraftLaunch.Classes.Models.Auth;
 public partial class App : Application
 {
     public static Window CurrentWindow = Window.Current;
-    public static OfflineAccount? userProfile_OfflineAccount { get; set; }
     public IThemeService ThemeService { get; set; }
     public IJsonNavigationViewService JsonNavigationViewService { get; set; }
     public new static App Current => (App)Application.Current;
