@@ -3,6 +3,9 @@
 
 using System.Collections.ObjectModel;
 using CmlLib.Core;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 
 namespace MinecraftBoot.Views;
 /// <summary>
@@ -28,7 +31,6 @@ public sealed partial class InstallPage : Page
         Visibility.Collapsed => Visibility.Visible,
         Visibility.Visible => Visibility.Collapsed,
         _ => throw new System.NotImplementedException(),
-
     };
 
 

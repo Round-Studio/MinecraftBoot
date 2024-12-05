@@ -37,7 +37,12 @@
                                         Duration="0:0:0.1" />
         </animations:ImplicitAnimationSet>
 
-        <DataTemplate x:Key="ContactListViewTemplate" x:DataType="type:GameVersionShowType">
+        <CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout">
+            <AppBarButton Label="下载" Icon="Download" ToolTipService.ToolTip="下载" />
+            <AppBarButton Label="特殊安装" Icon="Directions" ToolTipService.ToolTip="安装模组加载器" />
+        </CommandBarFlyout>
+
+        <DataTemplate x:Key="ContactListViewTemplate" x:DataType="type:GameVersionShowType" >
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -47,25 +52,42 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <FontIcon x:Name="Icon"
-                    Grid.RowSpan="2"
-                    Width ="32"
-                    Height="32"
-                    Margin="6"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Glyph="{x:Bind Icon}"/>
+                <Button Grid.RowSpan="2"
+                        Width ="32"
+                        Height="32"
+                        Margin="6"
+                        Padding="0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                    <Button.Content >
+                        <FontIcon x:Name="Icon"
+                          Width ="24"
+                          Height="24"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Glyph="{x:Bind Icon}"/>
+                    </Button.Content>
+                    <!--Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="下载" Icon="{ui:FontIcon Glyph=&#xE896;}"/>
+                            <MenuFlyoutItem Text="Share" Icon="{ui:FontIcon Glyph=&#xE896;}"/>
+                            <MenuFlyoutItem Text="Share" Icon="{ui:FontIcon Glyph=&#xE896;}"/>
+                        </MenuFlyout>
+                    </Button.Flyout-->
+
+                </Button>
+                
                 <TextBlock Grid.Column="1"
-                    Text="{x:Bind Name}"
-                    x:Phase="1"
-                    Style="{ThemeResource BaseTextBlockStyle}"
-                    Margin="12,6,0,0"/>
+                        Text="{x:Bind Name}"
+                        x:Phase="1"
+                        Style="{ThemeResource BaseTextBlockStyle}"
+                        Margin="12,6,0,0"/>
                 <TextBlock  Grid.Column="1"
-                    Grid.Row="1"
-                    Text="{x:Bind VersionCode}"
-                    x:Phase="2"
-                    Style="{ThemeResource BodyTextBlockStyle}"
-                    Margin="12,0,0,6"/>
+                        Grid.Row="1"
+                        Text="{x:Bind VersionCode}"
+                        x:Phase="2"
+                        Style="{ThemeResource BodyTextBlockStyle}"
+                        Margin="12,0,0,6"/>
             </Grid>
         </DataTemplate>
 
